@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" prefHeight="362.0" prefWidth="620.0" spacing="20.0"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.tesla.controllers.PrimaryController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+   </padding>
+   <Label text="Datasets">
+      <font>
+         <Font name="System Bold" size="12.0"/>
+      </font>
+   </Label>
+   <TableView fx:id="tableView" maxWidth="614.0" minWidth="200.0" prefHeight="340.0" prefWidth="582.0">
+      <columns>
+         <TableColumn fx:id="datasets" editable="false" maxWidth="579.0" minWidth="100.0" prefWidth="200.0"
+                      text="Name"/>
+         <TableColumn fx:id="minSalesCount" prefWidth="110.0" text="Min Sales Count"/>
+         <TableColumn fx:id="maxSalesCount" prefWidth="110.0" text="Max Sales Count"/>
+         <TableColumn fx:id="numOfRecsForEachMonth" editable="false" prefWidth="160.0" text="Records For Each Month"/>
+      </columns>
+   </TableView>
+   <HBox alignment="CENTER" spacing="20.0">
+      <VBox.margin>
+         <Insets/>
+      </VBox.margin>
+      <Button minHeight="0.0" minWidth="90.0" mnemonicParsing="false" onAction="#switchToAddDatasetScene"
+              text="Add"/>
+      <Button minWidth="90.0" mnemonicParsing="false" onAction="#deleteSelectedDataset" text="Delete"/>
+      <Button minWidth="90.0" mnemonicParsing="false" onAction="#initializeForecastProcess" text="Get forecast"/>
+      <Button mnemonicParsing="false" onAction="#switchToUpdate" text="View/Update"/>
+   </HBox>
+</VBox>
