@@ -19,8 +19,8 @@ public class ExponentialSmoothing {
                 frr.add((int) forecast);
             }
         }
-        System.out.println("Original Dataset:      " + arr);
-        System.out.println("Exponential Smoothing: " + frr);
+        System.out.println("Original Dataset:             " + arr);
+        System.out.println("Exponential Smoothing:        " + frr);
         return frr;
     }
 
