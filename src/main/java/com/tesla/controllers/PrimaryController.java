@@ -67,12 +67,12 @@ public class PrimaryController implements Initializable {
         } else if (selected.size() > 1) {
             AlertBox.displayAlert("Invalid Choice", "Please select only one dataset.");
         } else {
+            System.out.println("Selected records sent to forecast classes");
+
             DeseasonalizedRegressionAnalysis.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             RegressionAnalysis.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             ExponentialSmoothing.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             DoubleExponentialSmoothing.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
-
-            System.out.println("Veriler forecast classlarına gönerildi.");
 
             try {
                 App.setRoot("fxml/birds-eye-forecast");

@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
 public class AlertBox {
     public static void displayAlert(String alertTitle, String alertMessage) {
         Stage window = new Stage();

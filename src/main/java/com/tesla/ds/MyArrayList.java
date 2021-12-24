@@ -1,7 +1,5 @@
 package com.tesla.ds;
 
-import java.io.Serializable;
-
 @SuppressWarnings("unchecked")
 public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     private T[] arr;
@@ -127,6 +125,15 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
                 throw new UnsupportedOperationException();
             }
         };
+    }
+
+    public MyArrayList<T> getReverse() {
+        MyArrayList<T> reversed = new MyArrayList<>();
+
+        for (int i = size(); i > 0; i--) {
+            reversed.add(arr[i - 1]);
+        }
+        return reversed;
     }
 
     @Override

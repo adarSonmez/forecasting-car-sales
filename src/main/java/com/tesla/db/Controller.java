@@ -4,14 +4,11 @@ import com.mongodb.client.MongoCollection;
 import com.tesla.ds.MyArrayList;
 import org.bson.Document;
 
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
 public class Controller {
     private Controller() {
-
     }
 
     public static void addDataset(String name, int numOfRecordsForEachMonth, Map<String, String[]> records1, Map<String, String[]> records2) {

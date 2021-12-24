@@ -1,11 +1,14 @@
 package com.tesla.controllers;
 
 import com.tesla.App;
+import com.tesla.components.AlertBox;
 import com.tesla.db.Controller;
 import com.tesla.models.Dataset;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +19,8 @@ import java.util.ResourceBundle;
 public class ViewUpdateController extends HandleFields implements Initializable {
     public static Dataset dataset;
     public Label datasetName;
+    public TextField valueToBeSearched;
+    public Label television;
 
     public void updateDataset() {
         Map<String, String[]> records1 = getFirstYear();
@@ -236,5 +241,30 @@ public class ViewUpdateController extends HandleFields implements Initializable 
 
         numOfRecs.setText(String.valueOf(dataset.getNumOfRecordsForEachMonth()));
         datasetName.setText(dataset.getName());
+    }
+
+    private boolean containsOnlyNumbers(String str) {
+        if (str == null || str.length() == 0)
+            return false;
+        for (int i = 0; i < str.length(); i++)
+            if (!Character.isDigit(str.charAt(i)))
+                return false;
+        return true;
+    }
+
+    public void searchValue(ActionEvent actionEvent) {
+        if (!containsOnlyNumbers(valueToBeSearched.getText())) {
+            AlertBox.displayAlert("Invalid Input", "Your input must consist of numbers only");
+            return;
+        }
+
+        if (dataset.getListOfRecords().contains(Integer.parseInt(valueToBeSearched.getText())))
+            television.setText(valueToBeSearched.getText() + " is contained in the dataset.");
+        else
+            television.setText(valueToBeSearched.getText() + " is not found on in the dataset.");
+    }
+
+    public void printReversed(ActionEvent actionEvent) {
+        television.setText("Reversed Dataset: " + dataset.getListOfRecords().getReverse().toString());
     }
 }
