@@ -5,6 +5,9 @@ import com.tesla.models.Dataset;
 
 public class RegressionAnalysis {
     private static double MSE;
+    private static int maxForecastedSales;
+    private static int minForecastedSales;
+    private static Dataset forecastedDataset;
 
     public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
         MyArrayList<Integer> arr = dataset.getListOfRecords();
@@ -68,5 +71,25 @@ public class RegressionAnalysis {
         mse = sum / F.size();
         System.out.println(mse);
         return mse;
+    }
+
+    public static int getMaxForecastedSales() {
+        return maxForecastedSales;
+    }
+
+    public static void setMaxForecastedSales(int maxForecastedSales) {
+        RegressionAnalysis.maxForecastedSales = maxForecastedSales;
+    }
+
+    public static int getMinForecastedSales() {
+        return minForecastedSales;
+    }
+
+    public static void setMinForecastedSales(int minForecastedSales) {
+        RegressionAnalysis.minForecastedSales = minForecastedSales;
+    }
+
+    public static Dataset getForecastedDataset() {
+        return forecastedDataset;
     }
 }

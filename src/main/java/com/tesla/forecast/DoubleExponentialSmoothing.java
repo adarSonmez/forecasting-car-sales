@@ -10,6 +10,10 @@ public class DoubleExponentialSmoothing {
     private static final int INITIAL_G = 50;
     private static double MSE;
 
+    private static int maxForecastedSales;
+    private static int minForecastedSales;
+    private static Dataset forecastedDataset;
+
     public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
         MyArrayList<Integer> arr = dataset.getListOfRecords();
         MyArrayList<Integer> frr = new MyArrayList<>();
@@ -53,5 +57,25 @@ public class DoubleExponentialSmoothing {
         mse = sum / F.size();
         System.out.println(mse);
         return mse;
+    }
+
+    public static int getMaxForecastedSales() {
+        return maxForecastedSales;
+    }
+
+    public static void setMaxForecastedSales(int maxForecastedSales) {
+        DoubleExponentialSmoothing.maxForecastedSales = maxForecastedSales;
+    }
+
+    public static int getMinForecastedSales() {
+        return minForecastedSales;
+    }
+
+    public static void setMinForecastedSales(int minForecastedSales) {
+        DoubleExponentialSmoothing.minForecastedSales = minForecastedSales;
+    }
+
+    public static Dataset getForecastedDataset() {
+        return forecastedDataset;
     }
 }

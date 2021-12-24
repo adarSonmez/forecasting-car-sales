@@ -6,6 +6,9 @@ import com.tesla.models.Dataset;
 public class ExponentialSmoothing {
     private static final double E_ALPHA = 0.2;
     private static double MSE;
+    private static int maxForecastedSales;
+    private static int minForecastedSales;
+    private static Dataset forecastedDataset;
 
     public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
         MyArrayList<Integer> frr = new MyArrayList<>();
@@ -42,5 +45,25 @@ public class ExponentialSmoothing {
         mse = sum / F.size();
         System.out.println(mse);
         return mse;
+    }
+
+    public static int getMaxForecastedSales() {
+        return maxForecastedSales;
+    }
+
+    public static void setMaxForecastedSales(int maxForecastedSales) {
+        ExponentialSmoothing.maxForecastedSales = maxForecastedSales;
+    }
+
+    public static int getMinForecastedSales() {
+        return minForecastedSales;
+    }
+
+    public static void setMinForecastedSales(int minForecastedSales) {
+        ExponentialSmoothing.minForecastedSales = minForecastedSales;
+    }
+
+    public static Dataset getForecastedDataset() {
+        return forecastedDataset;
     }
 }

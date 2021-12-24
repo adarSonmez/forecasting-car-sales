@@ -73,6 +73,7 @@ public class PrimaryController implements Initializable {
             DoubleExponentialSmoothing.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             RegressionAnalysis.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             DeseasonalizedRegressionAnalysis.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
+            BirdsEyeForecastsController.setDataset(selected.get(0));
 
             try {
                 App.setRoot("fxml/birds-eye-forecast");
