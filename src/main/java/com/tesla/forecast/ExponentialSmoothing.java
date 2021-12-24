@@ -28,7 +28,7 @@ public class ExponentialSmoothing {
     public static double getMSE() {
         return MSE;
     }
-
+    //Changed void to int.
     private static int calcMSE(Dataset dataset , MyArrayList<Integer> F) {
         int mse = 0;
         int add = 0;
