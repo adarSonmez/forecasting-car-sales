@@ -45,6 +45,8 @@ public class RegressionAnalysis {
             regressionAnalysis = rega + (regb * i);
             frr.add((int) regressionAnalysis);
         }
+        System.out.println("Regression Analysis:          " + frr);
+
         return frr;
     }
 
