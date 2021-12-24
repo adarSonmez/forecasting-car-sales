@@ -217,5 +217,129 @@ public class Dataset {
     public MyArrayList<String> getDecemberRecords2() {
         return decemberRecords2;
     }
+    // Take the datas from Dataset.
+    public static MyArrayList<Integer> getDataset(Dataset dataset){
+        MyArrayList<Integer> arr = new MyArrayList<>();
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getJanuaryRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getFebruaryRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getMarchRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getAprilRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getMayRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getJunRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getJulyRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getAugustRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getSeptemberRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getOctoberRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getNovemberRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getDecemberRecords1().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getJanuaryRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getFebruaryRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getMarchRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getAprilRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getMayRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getJunRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getJulyRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getAugustRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getSeptemberRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getOctoberRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getNovemberRecords2().get(i));
+            arr.add(a);
+        }
+
+        for (int i = 0; i < dataset.numOfRecordsForEachMonth; i++){
+            int a = Integer.parseInt(dataset.getDecemberRecords2().get(i));
+            arr.add(a);
+        }
+        return arr;
+    } // end of function
 
 }
