@@ -13,29 +13,27 @@ public class RegressionAnalysis {
         MyArrayList<Integer> arr = dataset.getListOfRecords();
         MyArrayList<Integer> frr = new MyArrayList<>();
         double regressionAnalysis = 0;
-        int month = arr.size();
+        double month = arr.size();
         double rega = 0;
         double regb = 0;
-        double sumOfAv1 = 0;
         //x
-        int calcOfTime = 0;
+        double calcOfTime = 0;
         //y
-        int calcOfSales = 0;
+        double calcOfSales = 0;
         //x^2
-        int calcOfTimePower = 0;
+        double calcOfTimePower = 0;
         //x.y
-        int calcOfMxS = 0;
+        double calcOfMxS = 0;
         double averageOfSales = 0;
         double averageTime = 0;
         for (int i = 1; i < month + 1; i++) {
             calcOfTime += i;
             calcOfSales += arr.get(i - 1);
-            calcOfTimePower = i * i;
-            calcOfMxS = (i * (arr.get(i - 1)));
-            sumOfAv1 += arr.get(i - 1);
+            calcOfTimePower += i * i;
+            calcOfMxS += (i * (arr.get(i - 1)));
         }
         //~y
-        averageOfSales = sumOfAv1 / month;
+        averageOfSales = calcOfSales / month;
         //~x
         averageTime = calcOfTime / month;
         //regb
@@ -44,12 +42,11 @@ public class RegressionAnalysis {
         //rega
         rega = averageOfSales - regb * averageTime;
         //regressionAnalaysis
-        for (int i = 0; i < month; i++) {
+        for (int i = 1; i < month + 1; i++) {
             regressionAnalysis = rega + (regb * i);
             frr.add((int) regressionAnalysis);
         }
         System.out.println("Regression Analysis:          " + frr);
-
         return frr;
     }
 
