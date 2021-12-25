@@ -88,8 +88,8 @@ public class DeseasonalizedRegressionAnalysis {
         //rega
         rega = averageOfSales - regb * averageOfTime;
         //Find forecasts and add into an array.
-        for (int i = 1; i < month + 1; i++) {
-            regressionAnalysis = rega + (regb * i);
+        for (int i = 25; i < month + 25; i++) {
+            regressionAnalysis = rega + (regb * (i));
             frr.add((int) regressionAnalysis);
         }
         System.out.println(frr);

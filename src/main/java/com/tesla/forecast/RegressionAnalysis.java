@@ -42,7 +42,7 @@ public class RegressionAnalysis {
         //rega
         rega = averageOfSales - regb * averageTime;
         //regressionAnalaysis
-        for (int i = 1; i < month + 1; i++) {
+        for (int i = 25; i < month + 25; i++) {
             regressionAnalysis = rega + (regb * i);
             frr.add((int) regressionAnalysis);
         }
