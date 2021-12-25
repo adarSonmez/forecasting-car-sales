@@ -52,7 +52,7 @@ public class DoubleExponentialSmoothing {
         MyArrayList<Integer> arr = new MyArrayList<>();
         for (int i = 0; i < F.size(); i++) {
             add = (data.get(i) - F.get(i)) * (data.get(i) - F.get(i));
-            sum += mse;
+            sum += add;
         }
         mse = sum / F.size();
         System.out.println(mse);
