@@ -1,5 +1,8 @@
 package com.tesla.ds;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 @SuppressWarnings("unchecked")
 public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     private T[] arr;
@@ -134,6 +137,16 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
             reversed.add(arr[i - 1]);
         }
         return reversed;
+    }
+
+    public T[] sortInDescendingOrder() {
+        T[] sorted;
+        sorted = (T[]) new Integer[size()];
+        System.arraycopy(arr, 0, sorted, 0, size());
+
+        Arrays.sort(sorted, Collections.reverseOrder());
+
+        return sorted;
     }
 
     @Override

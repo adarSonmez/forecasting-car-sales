@@ -12,9 +12,12 @@ public class DoubleExponentialSmoothing {
 
     private static int maxForecastedSales;
     private static int minForecastedSales;
-    private static Dataset forecastedDataset;
+    private static MyArrayList<Integer> forecastedList;
+    private static int numOfRecs;
 
     public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
+        numOfRecs = numOfRecordsForEachMonth;
+
         MyArrayList<Integer> arr = dataset.getListOfRecords();
         MyArrayList<Integer> frr = new MyArrayList<>();
 
@@ -35,6 +38,10 @@ public class DoubleExponentialSmoothing {
             double forcast = arrS.get(i) + arrG.get(i);
             frr.add((int) forcast);
         }
+        MSE = ForecastUtil.calcMSE(dataset, frr);
+        minForecastedSales = ForecastUtil.getMinForecastedSales(frr);
+        maxForecastedSales = ForecastUtil.getMaxForecastedSales(frr);
+        forecastedList = frr;
         System.out.println("Double Exponential Smoothing: " + frr);
 
         return frr;
@@ -44,38 +51,19 @@ public class DoubleExponentialSmoothing {
         return MSE;
     }
 
-    private static int calcMSE(Dataset dataset, MyArrayList<Integer> F) {
-        int mse = 0;
-        int add = 0;
-        int sum = 0;
-        MyArrayList<Integer> data = dataset.getListOfRecords();
-        MyArrayList<Integer> arr = new MyArrayList<>();
-        for (int i = 0; i < F.size(); i++) {
-            add = (data.get(i) - F.get(i)) * (data.get(i) - F.get(i));
-            sum += add;
-        }
-        mse = sum / F.size();
-        System.out.println(mse);
-        return mse;
-    }
-
     public static int getMaxForecastedSales() {
         return maxForecastedSales;
-    }
-
-    public static void setMaxForecastedSales(int maxForecastedSales) {
-        DoubleExponentialSmoothing.maxForecastedSales = maxForecastedSales;
     }
 
     public static int getMinForecastedSales() {
         return minForecastedSales;
     }
 
-    public static void setMinForecastedSales(int minForecastedSales) {
-        DoubleExponentialSmoothing.minForecastedSales = minForecastedSales;
+    public static MyArrayList<Integer> getForecastedList() {
+        return forecastedList;
     }
 
-    public static Dataset getForecastedDataset() {
-        return forecastedDataset;
+    public static int getNumOfRecs() {
+        return numOfRecs;
     }
 }

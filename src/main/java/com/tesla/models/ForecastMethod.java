@@ -1,17 +1,19 @@
 package com.tesla.models;
 
+import com.tesla.ds.MyArrayList;
+
 public class ForecastMethod {
     private String name;
     private int maxSales;
     private int minSales;
-    private Dataset dataset;
+    private MyArrayList<Integer> forecastedList;
     private double MSE;
 
-    public ForecastMethod(String name, int maxSales, int minSales, Dataset dataset, double mse) {
+    public ForecastMethod(String name, int maxSales, int minSales, MyArrayList<Integer> forecastedList, double mse) {
         this.name = name;
         this.maxSales = maxSales;
         this.minSales = minSales;
-        this.dataset = dataset;
+        this.forecastedList = forecastedList;
         MSE = mse;
     }
 
@@ -39,12 +41,12 @@ public class ForecastMethod {
         this.minSales = minSales;
     }
 
-    public Dataset getDataset() {
-        return dataset;
+    public MyArrayList<Integer> getForecastedList() {
+        return forecastedList;
     }
 
-    public void setDataset(Dataset dataset) {
-        this.dataset = dataset;
+    public void setForecastedList(MyArrayList<Integer> forecastedList) {
+        this.forecastedList = forecastedList;
     }
 
     public double getMSE() {

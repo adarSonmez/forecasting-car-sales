@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="626.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesla.controllers.ViewForecastedDataset">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <Label fx:id="datasetName" alignment="CENTER" prefHeight="0.0" prefWidth="369.0" text="Dataset 1" textAlignment="CENTER" />
+   <HBox alignment="CENTER" prefHeight="20.0" prefWidth="586.0">
+      <VBox.margin>
+         <Insets top="-10.0" />
+      </VBox.margin>
+      <Label fx:id="methodName" alignment="CENTER" prefHeight="17.0" prefWidth="377.0" text="Exponential Smoothing" />
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <VBox.margin>
+         <Insets top="-10.0" />
+      </VBox.margin>
+   </HBox>
+   <Button mnemonicParsing="false" onAction="#sortDescending" text="Sort In Descending Order">
+      <VBox.margin>
+         <Insets top="-20.0" />
+      </VBox.margin>
+   </Button>
+   <Label fx:id="television" alignment="CENTER" prefHeight="438.0" prefWidth="467.0" style="-fx-background-color: #ccc;" textFill="#4a4a4a" wrapText="true">
+      <VBox.margin>
+         <Insets top="-10.0" />
+      </VBox.margin>
+   </Label>
+   <VBox prefHeight="458.0" prefWidth="586.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <Label alignment="CENTER" text="Year 1" textAlignment="CENTER" />
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="201.0" prefWidth="586.0" spacing="20.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jan">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="jan1" promptText="January" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feb">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="feb1" prefWidth="152.0" promptText="February" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mar">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="mar1" promptText="March" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apr">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="apr1" promptText="April" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="May">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="may1" prefWidth="152.0" promptText="May" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jun">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="jun1" promptText="Jun" />
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="201.0" prefWidth="586.0" spacing="20.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jul" wrappingWidth="18.98046875">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="jul1" prefHeight="25.0" prefWidth="157.0" promptText="July" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aug">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="aug1" prefHeight="25.0" prefWidth="163.0" promptText="August" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sep" wrappingWidth="21.705078125">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="sep1" prefHeight="25.0" prefWidth="160.0" promptText="September" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oct" wrappingWidth="21.65625">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="oct1" prefHeight="25.0" prefWidth="155.0" promptText="October" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nov" wrappingWidth="24.755859375">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="nov1" prefHeight="25.0" prefWidth="161.0" promptText="November" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dec">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="dec1" prefHeight="25.0" prefWidth="155.0" promptText="December" />
+      </HBox>
+   </VBox>
+   <VBox layoutX="30.0" layoutY="169.0" prefHeight="457.0" prefWidth="586.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="586.0">
+         <Label alignment="CENTER" text="Year 2" textAlignment="CENTER" />
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="201.0" prefWidth="586.0" spacing="20.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jan">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="jan2" promptText="January" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feb">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="feb2" prefWidth="152.0" promptText="February" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mar">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="mar2" promptText="March" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apr">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="apr2" promptText="April" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="May">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="may2" prefWidth="152.0" promptText="May" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jun">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="jun2" promptText="Jun" />
+      </HBox>
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="201.0" prefWidth="586.0" spacing="20.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jul" wrappingWidth="18.98046875">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="jul2" promptText="July" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Aug" wrappingWidth="22.59765625">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="aug2" prefHeight="25.0" prefWidth="158.0" promptText="August" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sep" wrappingWidth="19.705078125">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="sep2" prefHeight="25.0" prefWidth="153.0" promptText="September" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Oct">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="oct2" prefHeight="25.0" prefWidth="151.0" promptText="October" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nov" wrappingWidth="23.755859375">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="nov2" prefHeight="25.0" prefWidth="156.0" promptText="November" />
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dec">
+            <HBox.margin>
+               <Insets right="-15.0" />
+            </HBox.margin>
+         </Text>
+         <TextField fx:id="dec2" promptText="December" />
+      </HBox>
+   </VBox>
+   <HBox alignment="CENTER" prefHeight="59.0" prefWidth="586.0" spacing="10.0">
+      <Button layoutX="260.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchToBirdsEyeForecasts" prefHeight="32.0" prefWidth="87.0" text="Go Back" />
+   </HBox>
+</VBox>
