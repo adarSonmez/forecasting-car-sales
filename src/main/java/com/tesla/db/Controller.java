@@ -2,6 +2,7 @@ package com.tesla.db;
 
 import com.mongodb.client.MongoCollection;
 import com.tesla.ds.MyArrayList;
+import com.tesla.ds.MyMap;
 import org.bson.Document;
 
 import java.util.Arrays;
@@ -11,7 +12,7 @@ public class Controller {
     private Controller() {
     }
 
-    public static void addDataset(String name, int numOfRecordsForEachMonth, Map<String, String[]> records1, Map<String, String[]> records2) {
+    public static void addDataset(String name, int numOfRecordsForEachMonth, MyMap<String, String[]> records1, MyMap<String, String[]> records2) {
         Document document = createDocumentToInsert(name, numOfRecordsForEachMonth, records1, records2);
 
         MongoCollection<Document> datasetCollection = Config.getDatasetCollection();
@@ -19,7 +20,7 @@ public class Controller {
         System.out.println(name + " added to the Database.");
     }
 
-    public static void updateDataset(String name, int numOfRecordsForEachMonth, Map<String, String[]> records1, Map<String, String[]> records2) {
+    public static void updateDataset(String name, int numOfRecordsForEachMonth, MyMap<String, String[]> records1, MyMap<String, String[]> records2) {
         Document update = new Document("Name", name);
         Document document = createDocumentToInsert(name, numOfRecordsForEachMonth, records1, records2);
 
@@ -28,17 +29,17 @@ public class Controller {
         System.out.println(name + " updated.");
     }
 
-    private static Document createDocumentToInsert(String name, int numOfRecordsForEachMonth, Map<String, String[]> records1, Map<String, String[]> records2) {
+    private static Document createDocumentToInsert(String name, int numOfRecordsForEachMonth, MyMap<String, String[]> records1, MyMap<String, String[]> records2) {
         Document document = new Document("Name", name);
         Document firstYear = new Document();
         Document secondYear = new Document();
 
-        for (var entry : records1.entrySet()) {
-            firstYear.append(entry.getKey(), Arrays.asList(entry.getValue()));
+        for (int i = 0; i < records1.getSize(); i++) {
+            firstYear.append(records1.keys().get(i), Arrays.asList(records1.values().get(i)));
         }
 
-        for (var entry : records2.entrySet()) {
-            secondYear.append(entry.getKey(), Arrays.asList(entry.getValue()));
+        for (int i = 0; i < records2.getSize(); i++) {
+            secondYear.append(records2.keys().get(i), Arrays.asList(records2.values().get(i)));
         }
 
         document.append("First Year", firstYear);

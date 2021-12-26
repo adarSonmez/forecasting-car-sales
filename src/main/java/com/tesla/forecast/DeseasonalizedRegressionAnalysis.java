@@ -40,7 +40,6 @@ public class DeseasonalizedRegressionAnalysis {
         double averageOfSales = 0;
         double averageOfTime = 0;
 
-
         // Split one array to two array
         for (int i = 0; i < month; i++) {
             if (i < 12) {

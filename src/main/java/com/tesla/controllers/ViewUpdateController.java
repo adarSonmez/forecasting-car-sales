@@ -3,6 +3,7 @@ package com.tesla.controllers;
 import com.tesla.App;
 import com.tesla.components.AlertBox;
 import com.tesla.db.Controller;
+import com.tesla.ds.MyMap;
 import com.tesla.models.Dataset;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +24,8 @@ public class ViewUpdateController extends HandleFields implements Initializable 
     public Label television;
 
     public void updateDataset() {
-        Map<String, String[]> records1 = getFirstYear();
-        Map<String, String[]> records2 = getSecondYear();
+        MyMap<String, String[]> records1 = getFirstYear();
+        MyMap<String, String[]> records2 = getSecondYear();
 
         boolean valid = isDatasetValid(records1, records2, numOfRecs);
 

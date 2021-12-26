@@ -2,6 +2,7 @@ package com.tesla.controllers;
 
 import com.tesla.App;
 import com.tesla.db.Controller;
+import com.tesla.ds.MyMap;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -22,8 +23,8 @@ public class AddDatasetController extends HandleFields {
     }
 
     public void submitDataset() {
-        Map<String, String[]> records1 = getFirstYear();
-        Map<String, String[]> records2 = getSecondYear();
+        MyMap<String, String[]> records1 = getFirstYear();
+        MyMap<String, String[]> records2 = getSecondYear();
 
         String name = nameDataset();
 

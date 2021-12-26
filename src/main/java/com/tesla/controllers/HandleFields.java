@@ -1,10 +1,9 @@
 package com.tesla.controllers;
 
 import com.tesla.components.AlertBox;
+import com.tesla.ds.MyMap;
 import javafx.scene.control.TextField;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public abstract class HandleFields {
@@ -38,16 +37,16 @@ public abstract class HandleFields {
     public TextField nov2;
     public TextField dec2;
 
-    public Map<String, String[]> getFirstYear() {
-        return getStringMap(jan1, feb1, mar1, apr1, may1, jun1, jul1, aug1, sep1, oct1, nov1, dec1);
+    public MyMap<String, String[]> getFirstYear() {
+        return getStringMyMap(jan1, feb1, mar1, apr1, may1, jun1, jul1, aug1, sep1, oct1, nov1, dec1);
     }
 
-    public Map<String, String[]> getSecondYear() {
-        return getStringMap(jan2, feb2, mar2, apr2, may2, jun2, jul2, aug2, sep2, oct2, nov2, dec2);
+    public MyMap<String, String[]> getSecondYear() {
+        return getStringMyMap(jan2, feb2, mar2, apr2, may2, jun2, jul2, aug2, sep2, oct2, nov2, dec2);
     }
 
-    private Map<String, String[]> getStringMap(TextField jan, TextField feb, TextField mar, TextField apr, TextField may, TextField jun, TextField jul, TextField aug, TextField sep, TextField oct, TextField nov, TextField dec) {
-        Map<String, String[]> records1 = new HashMap<>();
+    private MyMap<String, String[]> getStringMyMap(TextField jan, TextField feb, TextField mar, TextField apr, TextField may, TextField jun, TextField jul, TextField aug, TextField sep, TextField oct, TextField nov, TextField dec) {
+        MyMap<String, String[]> records1 = new MyMap<>();
 
         records1.put("January", jan.getText().split("-"));
         records1.put("February", feb.getText().split("-"));
@@ -65,7 +64,7 @@ public abstract class HandleFields {
         return records1;
     }
 
-    public boolean isDatasetValid(Map<String, String[]> records1, Map<String, String[]> records2, TextField size) {
+    public boolean isDatasetValid(MyMap<String, String[]> records1, MyMap<String, String[]> records2, TextField size) {
         if (size == null) {
             AlertBox.displayAlert("Fill in the blanks", "Please enter number of records for each month!");
             return false;
