@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="626.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesla.controllers.AddDatasetController">
+<VBox alignment="TOP_CENTER" maxHeight="420.0" maxWidth="626.0" prefHeight="420.0" prefWidth="626.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesla.controllers.AddDatasetController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
-   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
-      <Label text="Number of record for each month*" />
+   <HBox alignment="CENTER" maxHeight="50.0" maxWidth="307.0" prefHeight="25.0" prefWidth="307.0">
+      <Label prefHeight="17.0" prefWidth="200.0" text="Number of record for each month*" />
       <TextField fx:id="numOfRecs" maxWidth="242.0" prefHeight="25.0" prefWidth="37.0">
          <HBox.margin>
             <Insets left="10.0" />
          </HBox.margin></TextField>
    </HBox>
    <Label prefHeight="130.0" prefWidth="438.0" text="If you want to ad  multiple records for each month, seperate records with hyphen with no spaces (i.e., 25-19-21)" textFill="#4a4a4a" wrapText="true" />
-   <VBox prefHeight="189.0" prefWidth="586.0">
+   <VBox maxHeight="189.0" maxWidth="586.0" prefHeight="189.0" prefWidth="586.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <Label alignment="CENTER" text="Year 1" textAlignment="CENTER" />
       </HBox>
@@ -40,7 +40,7 @@
          <TextField fx:id="dec1" promptText="December" />
       </HBox>
    </VBox>
-   <VBox layoutX="30.0" layoutY="169.0" prefHeight="189.0" prefWidth="586.0">
+   <VBox layoutX="30.0" layoutY="169.0" maxHeight="189.0" maxWidth="586.0" prefHeight="189.0" prefWidth="586.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <Label alignment="CENTER" text="Year 2" textAlignment="CENTER" />
       </HBox>
@@ -61,7 +61,7 @@
          <TextField fx:id="dec2" promptText="December" />
       </HBox>
    </VBox>
-   <HBox alignment="CENTER" prefHeight="59.0" prefWidth="586.0" spacing="10.0">
+   <HBox alignment="CENTER" maxHeight="59.0" maxWidth="586.0" prefHeight="59.0" prefWidth="586.0" spacing="10.0">
       <Button layoutX="260.0" layoutY="11.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="32.0" prefWidth="87.0" text="Go Back" />
       <Button mnemonicParsing="false" onAction="#submitDataset" prefHeight="32.0" prefWidth="87.0" text="Add Dataset" />
    </HBox>
