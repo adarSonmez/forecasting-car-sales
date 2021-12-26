@@ -2,7 +2,6 @@ package com.tesla.controllers;
 
 import com.tesla.App;
 import com.tesla.components.AlertBox;
-import com.tesla.ds.MyArrayList;
 import com.tesla.forecast.DeseasonalizedRegressionAnalysis;
 import com.tesla.forecast.DoubleExponentialSmoothing;
 import com.tesla.forecast.ExponentialSmoothing;
@@ -11,7 +10,6 @@ import com.tesla.models.Dataset;
 import com.tesla.models.ForecastMethod;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -53,7 +51,8 @@ public class BirdsEyeForecastsController implements Initializable {
         }
     }
 
-    public void getForecastedDataset(ActionEvent actionEvent) {
+    // get forecasted records according to selected method
+    public void getForecastedDataset() {
         ObservableList<ForecastMethod> selected = MethodsTable.getSelectionModel().getSelectedItems();
         if (selected.size() == 0) {
             AlertBox.displayAlert("Invalid Choice", "Please select a method.");
@@ -74,6 +73,7 @@ public class BirdsEyeForecastsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         datasetName.setText("Forecast Methods for " + dataset.getName());
 
+        // create ForecastMethod model for each method
         ForecastMethod exponentialSmoothing = new ForecastMethod("Exponential Smoothing", ExponentialSmoothing.getMaxForecastedSales(), ExponentialSmoothing.getMinForecastedSales(), ExponentialSmoothing.getForecastedList(), ExponentialSmoothing.getMSE());
         ForecastMethod doubleExponentialSmoothing = new ForecastMethod("Double Exponential Smoothing", DoubleExponentialSmoothing.getMaxForecastedSales(), DoubleExponentialSmoothing.getMinForecastedSales(), DoubleExponentialSmoothing.getForecastedList(), DoubleExponentialSmoothing.getMSE());
         ForecastMethod regressionAnalysis = new ForecastMethod("Regression Analysis", RegressionAnalysis.getMaxForecastedSales(), RegressionAnalysis.getMinForecastedSales(), RegressionAnalysis.getForecastedList(), RegressionAnalysis.getMSE());
@@ -86,6 +86,7 @@ public class BirdsEyeForecastsController implements Initializable {
         observableList.add(regressionAnalysis);
         observableList.add(deseasonalizedRegressionAnalysis);
 
+        // add properties of methods to the table
         methodName.setCellValueFactory(new PropertyValueFactory<>("name"));
         minSales.setCellValueFactory(new PropertyValueFactory<>("minSales"));
         maxSales.setCellValueFactory(new PropertyValueFactory<>("maxSales"));
@@ -93,8 +94,9 @@ public class BirdsEyeForecastsController implements Initializable {
         MethodsTable.setItems(observableList);
     }
 
+    // display the name of method with lowest mse
     private void mostAccurateMethod(double exp, double dexp, double reg, double dreg) {
-        String efficientMethod = "";
+        String efficientMethod;
         if (exp <= dexp && exp <= reg && exp <= dreg)
             efficientMethod = "Exponential Smoothing";
         else if (dexp <= exp && dexp <= reg && dexp <= dreg)
@@ -106,4 +108,5 @@ public class BirdsEyeForecastsController implements Initializable {
 
         mostAccurateMethodLabel.setText("The most accurate method for this dataset is " + efficientMethod + ". But you can also get forecasted datasets in any method.");
     }
+
 }

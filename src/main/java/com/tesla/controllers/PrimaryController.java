@@ -50,6 +50,7 @@ public class PrimaryController implements Initializable {
         } else if (selected.size() > 1) {
             AlertBox.displayAlert("Invalid Choice", "Please select only one dataset.");
         } else {
+            // delete selected dataset from database and ui
             ViewUpdateController.dataset = selected.get(0);
             selected.forEach(dataset -> {
                 Document document = new Document("Name", dataset.getName());
@@ -71,6 +72,7 @@ public class PrimaryController implements Initializable {
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             System.out.println("Original Dataset:             " + selected.get(0).getListOfRecords().toString());
 
+            // calculate forecast records of each forecast method
             ExponentialSmoothing.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             DoubleExponentialSmoothing.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
             RegressionAnalysis.initializeForecast(selected.get(0).getNumOfRecordsForEachMonth(), selected.get(0));
@@ -88,6 +90,7 @@ public class PrimaryController implements Initializable {
         }
     }
 
+    // refresh the page
     private void reload() {
         try {
             App.setRoot("fxml/primary");
@@ -99,6 +102,7 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // display every dataset stored in database
         MyArrayList<Document> listOfDocuments = Controller.getAllDatasets();
         for (Document doc : listOfDocuments) {
             MyArrayList<String> _jan1 = new MyArrayList<>(), _feb1 = new MyArrayList<>(), _mar1 = new MyArrayList<>(), _apr1 = new MyArrayList<>(), _may1 = new MyArrayList<>(), _jun1 = new MyArrayList<>(), _jul1 = new MyArrayList<>(), _aug1 = new MyArrayList<>(), _sep1 = new MyArrayList<>(), _oct1 = new MyArrayList<>(), _nov1 = new MyArrayList<>(), _dec1 = new MyArrayList<>(), _jan2 = new MyArrayList<>(), _feb2 = new MyArrayList<>(), _mar2 = new MyArrayList<>(), _apr2 = new MyArrayList<>(), _may2 = new MyArrayList<>(), _jun2 = new MyArrayList<>(), _jul2 = new MyArrayList<>(), _aug2 = new MyArrayList<>(), _sep2 = new MyArrayList<>(), _oct2 = new MyArrayList<>(), _nov2 = new MyArrayList<>(), _dec2 = new MyArrayList<>();
@@ -120,6 +124,11 @@ public class PrimaryController implements Initializable {
 
     @SuppressWarnings("unchecked")
     private void manuelCastingToMyArrayList(Document secondYear, MyArrayList<String> _jan1, MyArrayList<String> _feb1, MyArrayList<String> _mar1, MyArrayList<String> _apr1, MyArrayList<String> _may1, MyArrayList<String> _jun1, MyArrayList<String> _jul1, MyArrayList<String> _aug1, MyArrayList<String> _sep1, MyArrayList<String> _oct1, MyArrayList<String> _nov1, MyArrayList<String> _dec1) {
+        /* this list adt is not that we implemented, it's from util package
+         * the reason we don't use our own implementation is java treats collections from mongoDB as data structure from java.util.List
+         * using our own implementation here would cause an error.
+         * except for this one, all the data structures we use are our implementations.
+         * */
         List<String> jan = (List<String>) secondYear.get("January");
         jan.forEach(_jan1::add);
         List<String> feb = (List<String>) secondYear.get("February");

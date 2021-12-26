@@ -2,6 +2,7 @@ package com.tesla.models;
 
 import com.tesla.ds.MyArrayList;
 
+@SuppressWarnings("unused")
 public class ForecastMethod {
     private String name;
     private int maxSales;

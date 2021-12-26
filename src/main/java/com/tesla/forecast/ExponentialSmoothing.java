@@ -11,7 +11,7 @@ public class ExponentialSmoothing {
     private static MyArrayList<Integer> forecastedList;
     private static int numOfRecs;
 
-    public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
+    public static void initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
         numOfRecs = numOfRecordsForEachMonth;
 
         MyArrayList<Integer> frr = new MyArrayList<>();
@@ -31,7 +31,6 @@ public class ExponentialSmoothing {
         forecastedList = frr;
 
         System.out.println("Exponential Smoothing:        " + frr);
-        return frr;
     }
 
     public static double getMSE() {

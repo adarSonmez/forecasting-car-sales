@@ -10,54 +10,55 @@ public class DeseasonalizedRegressionAnalysis {
     private static MyArrayList<Integer> forecastedList;
     private static int numOfRecs;
 
-    public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
+    public static void initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
         numOfRecs = numOfRecordsForEachMonth;
 
         MyArrayList<Integer> arr = dataset.getListOfRecords();
-        MyArrayList<Integer> newArr = new MyArrayList<>();
         MyArrayList<Integer> arr1 = new MyArrayList<>();
         MyArrayList<Integer> arr2 = new MyArrayList<>();
         MyArrayList<Integer> frr = new MyArrayList<>();
         MyArrayList<Double> expectedDemands = new MyArrayList<>();
         MyArrayList<Double> deseasonDemand = new MyArrayList<>();
         MyArrayList<Double> periodFactors = new MyArrayList<>();
-        double period = 0;
+
+        double period;
         double expectedDemand;
         double month = arr.size();
         double overAllAverageSum = 0;
-        double deseasonalDemand = 0;
-        double regressionAnalysis = 0;
-        double rega = 0;
-        double regb = 0;
-        //y
+        double deseasonalDemand;
+        double regressionAnalysis;
+        double rega;
+        double regb;
+        // y
         double calcOfSales = 0;
-        //x
+        // x
         double calcOfTime = 0;
-        //x^2
+        // x^2
         double calcOfTimePower = 0;
-        //x.y
+        // x.y
         double calcofMxS = 0;
-        double averageOfSales = 0;
-        double averageOfTime = 0;
+        double averageOfSales;
+        double averageOfTime;
 
-        // Split one array to two array
+        // split one array into two arrays
         for (int i = 0; i < month; i++) {
-            if (i < 12) {
+            if (i < 12 * numOfRecordsForEachMonth) {
                 arr1.add(arr.get(i));
             } else {
                 arr2.add(arr.get(i));
             }
         }
-        // Find expected Demands.
+
+        // find expected demands
         for (int i = 0; i < month / 2; i++) {
             overAllAverageSum += arr1.get(i) + arr2.get(i);
-            expectedDemand = (arr1.get(i) + arr2.get(i)) / 2;
+            expectedDemand = (arr1.get(i) + arr2.get(i)) / 2.0;
             expectedDemands.add(expectedDemand);
         }
-        //Get overAll Average.
+
         double overAllAverage = overAllAverageSum / arr.size();
 
-        //Get Every period for 12 month. I did it twice because I will use them correct position.
+        // get every period for 12 month. I did it twice because I will use them correct position.
         for (int i = 0; i < expectedDemands.size(); i++) {
             period = expectedDemands.get(i) / overAllAverage;
             periodFactors.add(period);
@@ -67,7 +68,7 @@ public class DeseasonalizedRegressionAnalysis {
             periodFactors.add(period);
         }
 
-        //Get Deseason Demands.(y)
+        // get deseasonalized demands. (y)
         for (int i = 0; i < month; i++) {
             deseasonalDemand = arr.get(i) / periodFactors.get(i);
             deseasonDemand.add(deseasonalDemand);
@@ -79,16 +80,14 @@ public class DeseasonalizedRegressionAnalysis {
             calcOfSales += deseasonDemand.get(i - 1);
             calcofMxS += (i * (deseasonDemand.get(i - 1)));
         }
-        //~y
-        averageOfSales = calcOfSales / month;
-        //~x
-        averageOfTime = calcOfTime / month;
-        //regb
+
+        averageOfSales = calcOfSales / month; //~y
+        averageOfTime = calcOfTime / month; //~x
         regb = ((month * calcofMxS) - (calcOfTime * calcOfSales)) /
                 ((month * calcOfTimePower) - (calcOfTime * calcOfTime));
-        //rega
         rega = averageOfSales - regb * averageOfTime;
-        //Find forecasts and add into an array.
+
+        // find forecasts and add them into an array.
         for (int i = 25; i < month + 25; i++) {
             regressionAnalysis = rega + (regb * (i));
             frr.add((int) regressionAnalysis);
@@ -100,7 +99,6 @@ public class DeseasonalizedRegressionAnalysis {
         forecastedList = frr;
 
         System.out.println("Deseasonalized Reg. Analysis: " + frr);
-        return frr;
     }
 
     public static double getMSE() {

@@ -1,6 +1,6 @@
 package com.tesla.ds;
 
-public class MyDoublyLinkedList<T> implements Iterable<T>, MyList<T> {
+public class MyDoublyLinkedList<T> implements MyList<T> {
     private int size = 0;
     private Node<T> head = null;
     private Node<T> tail = null;
@@ -28,66 +28,58 @@ public class MyDoublyLinkedList<T> implements Iterable<T>, MyList<T> {
     }
 
     @Override
-    public void add(T elem) {
+    public void add(T e) {
         if (isEmpty()) {
-            head = tail = new Node<T>(elem, null, null);
+            head = tail = new Node<>(e, null, null);
         } else {
-            tail.next = new Node<T>(elem, tail, null);
+            tail.next = new Node<>(e, tail, null);
             tail = tail.next;
         }
         size++;
     }
 
-    private void addFirst(T elem) {
+    private void addFirst(T e) {
         if (isEmpty()) {
-            head = tail = new Node<T>(elem, null, null);
+            head = tail = new Node<>(e, null, null);
         } else {
-            head.prev = new Node<T>(elem, null, head);
+            head.prev = new Node<>(e, null, head);
             head = head.prev;
         }
         size++;
     }
 
     public void add(int index, T data) throws Exception {
-        if (index < 0 || index > size) {
-            throw new Exception("Illegal Index");
-        }
-        if (index == 0) {
-            addFirst(data);
-            return;
-        }
+        if (index < 0 || index > size) throw new Exception("Illegal Index");
+        else if (index == 0) addFirst(data);
+        else if (index == size) add(data);
+        else {
+            Node<T> temp = head;
+            for (int i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            Node<T> newNode = new Node<>(data, temp, temp.next);
+            temp.next.prev = newNode;
+            temp.next = newNode;
 
-        if (index == size) {
-            add(data);
-            return;
+            size++;
         }
-
-        Node<T> temp = head;
-        for (int i = 0; i < index - 1; i++) {
-            temp = temp.next;
-        }
-        Node<T> newNode = new Node<>(data, temp, temp.next);
-        temp.next.prev = newNode;
-        temp.next = newNode;
-
-        size++;
     }
 
     @Override
     public T first() {
-        if (isEmpty()) throw new RuntimeException("Empty list");
+        if (isEmpty()) throw new RuntimeException("List is empty");
         return head.data;
     }
 
     @Override
     public T last() {
-        if (isEmpty()) throw new RuntimeException("Empty list");
+        if (isEmpty()) throw new RuntimeException("List is empty");
         return tail.data;
     }
 
     @Override
     public T removeFirst() {
-        if (isEmpty()) throw new RuntimeException("Empty list");
+        if (isEmpty()) throw new RuntimeException("List is empty");
 
         T data = head.data;
         head = head.next;
@@ -101,7 +93,7 @@ public class MyDoublyLinkedList<T> implements Iterable<T>, MyList<T> {
 
     @Override
     public T removeLast() {
-        if (isEmpty()) throw new RuntimeException("Empty list");
+        if (isEmpty()) throw new RuntimeException("List is empty, you cant remove");
 
         T data = tail.data;
         tail = tail.prev;
@@ -122,7 +114,7 @@ public class MyDoublyLinkedList<T> implements Iterable<T>, MyList<T> {
         T data = node.data;
 
         node.data = null;
-        node = node.prev = node.next = null;
+        node.prev = node.next = null;
 
         --size;
         return data;
@@ -131,7 +123,7 @@ public class MyDoublyLinkedList<T> implements Iterable<T>, MyList<T> {
     @Override
     public T removeAt(int index) {
         if (index < 0 || index >= size) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Illegal Index");
         }
 
         int i;
@@ -151,52 +143,28 @@ public class MyDoublyLinkedList<T> implements Iterable<T>, MyList<T> {
 
     @Override
     public int indexOf(Object obj) {
-        int index = 0;
+
         Node<T> temp = head;
 
-        if (obj == null) {
-            for (; temp != null; temp = temp.next, index++) {
+        if (obj == null)
+            for (int index = 0; temp != null; temp = temp.next, index++) {
                 if (temp.data == null) {
                     return index;
                 }
             }
-        } else {
-            for (; temp != null; temp = temp.next, index++) {
+        else
+            for (int index = 0; temp != null; temp = temp.next, index++) {
                 if (obj.equals(temp.data)) {
                     return index;
                 }
             }
-        }
+
         return -1;
     }
 
     @Override
     public boolean contains(Object obj) {
         return indexOf(obj) != -1;
-    }
-
-    @Override
-    public java.util.Iterator<T> iterator() {
-        return new java.util.Iterator<T>() {
-            private Node<T> temp = head;
-
-            @Override
-            public boolean hasNext() {
-                return temp != null;
-            }
-
-            @Override
-            public T next() {
-                T data = temp.data;
-                temp = temp.next;
-                return data;
-            }
-
-            @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
-        };
     }
 
     @Override

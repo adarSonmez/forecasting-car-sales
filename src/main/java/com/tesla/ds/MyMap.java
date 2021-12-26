@@ -1,6 +1,10 @@
 package com.tesla.ds;
 
-public class MyMap<K,V> {
+/**
+ * this is the world's simplest map implementation.
+ */
+@SuppressWarnings("unused")
+public class MyMap<K, V> {
     MyArrayList<K> keys = new MyArrayList<>();
     MyArrayList<V> values = new MyArrayList<>();
     int size;
@@ -15,7 +19,7 @@ public class MyMap<K,V> {
         size++;
     }
 
-    public MyArrayList<K> keys () {
+    public MyArrayList<K> keys() {
         return keys;
     }
 

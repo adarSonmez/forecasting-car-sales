@@ -20,6 +20,4 @@ public interface MyList<T> {
     int indexOf(Object obj);
 
     boolean contains(Object obj);
-
-    void clear();
 }

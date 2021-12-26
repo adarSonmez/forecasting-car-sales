@@ -1,6 +1,7 @@
 package com.tesla.controllers;
 
 import com.tesla.components.AlertBox;
+import com.tesla.ds.MyArrayList;
 import com.tesla.ds.MyMap;
 import javafx.scene.control.TextField;
 
@@ -45,25 +46,27 @@ public abstract class HandleFields {
         return getStringMyMap(jan2, feb2, mar2, apr2, may2, jun2, jul2, aug2, sep2, oct2, nov2, dec2);
     }
 
+    // put every dataset record to "my map"
     private MyMap<String, String[]> getStringMyMap(TextField jan, TextField feb, TextField mar, TextField apr, TextField may, TextField jun, TextField jul, TextField aug, TextField sep, TextField oct, TextField nov, TextField dec) {
-        MyMap<String, String[]> records1 = new MyMap<>();
+        MyMap<String, String[]> records = new MyMap<>();
 
-        records1.put("January", jan.getText().split("-"));
-        records1.put("February", feb.getText().split("-"));
-        records1.put("March", mar.getText().split("-"));
-        records1.put("April", apr.getText().split("-"));
-        records1.put("May", may.getText().split("-"));
-        records1.put("Jun", jun.getText().split("-"));
-        records1.put("July", jul.getText().split("-"));
-        records1.put("August", aug.getText().split("-"));
-        records1.put("September", sep.getText().split("-"));
-        records1.put("October", oct.getText().split("-"));
-        records1.put("November", nov.getText().split("-"));
-        records1.put("December", dec.getText().split("-"));
+        records.put("January", jan.getText().split("-"));
+        records.put("February", feb.getText().split("-"));
+        records.put("March", mar.getText().split("-"));
+        records.put("April", apr.getText().split("-"));
+        records.put("May", may.getText().split("-"));
+        records.put("Jun", jun.getText().split("-"));
+        records.put("July", jul.getText().split("-"));
+        records.put("August", aug.getText().split("-"));
+        records.put("September", sep.getText().split("-"));
+        records.put("October", oct.getText().split("-"));
+        records.put("November", nov.getText().split("-"));
+        records.put("December", dec.getText().split("-"));
 
-        return records1;
+        return records;
     }
 
+    // check if dataset the user wants to add database valid
     public boolean isDatasetValid(MyMap<String, String[]> records1, MyMap<String, String[]> records2, TextField size) {
         if (size == null) {
             AlertBox.displayAlert("Fill in the blanks", "Please enter number of records for each month!");
@@ -93,5 +96,18 @@ public abstract class HandleFields {
             }
         }
         return true;
+    }
+
+    // extract records from forecasted list and group them according to numOfRecs
+    public String eachMonth(int monthNum, int numOfRecords, MyArrayList<Integer> list) {
+        int pointer = (monthNum - 1) * numOfRecords;
+        StringBuilder text = new StringBuilder();
+        for (int i = pointer; i < pointer + numOfRecords; i++) {
+            if (i == pointer + numOfRecords - 1)
+                text.append(list.get(i));
+            else
+                text.append(list.get(i)).append("-");
+        }
+        return text.toString();
     }
 }

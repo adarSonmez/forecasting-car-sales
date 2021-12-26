@@ -15,7 +15,7 @@ public class DoubleExponentialSmoothing {
     private static MyArrayList<Integer> forecastedList;
     private static int numOfRecs;
 
-    public static MyArrayList<Integer> initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
+    public static void initializeForecast(int numOfRecordsForEachMonth, Dataset dataset) {
         numOfRecs = numOfRecordsForEachMonth;
 
         MyArrayList<Integer> arr = dataset.getListOfRecords();
@@ -44,7 +44,6 @@ public class DoubleExponentialSmoothing {
         forecastedList = frr;
         System.out.println("Double Exponential Smoothing: " + frr);
 
-        return frr;
     }
 
     public static double getMSE() {

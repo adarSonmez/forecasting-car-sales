@@ -25,7 +25,6 @@ public class ForecastUtil {
         int add;
         int sum = 0;
         MyArrayList<Integer> data = dataset.getListOfRecords();
-        MyArrayList<Integer> arr = new MyArrayList<>();
         for (int i = 0; i < F.size(); i++) {
             add = (data.get(i) - F.get(i)) * (data.get(i) - F.get(i));
             sum += add;

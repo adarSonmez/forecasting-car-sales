@@ -4,6 +4,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.tesla.components.AlertBox;
 import org.bson.Document;
 
 import java.text.MessageFormat;
@@ -18,17 +19,20 @@ public final class Config {
 
     private static MongoCollection<Document> datasets;
 
-    private Config() {
-    }
-
+    // connect to the mongoDB
     public static void connectDB() {
-        Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
-        mongoLogger.setLevel(Level.SEVERE);
+        try {
+            Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
+            mongoLogger.setLevel(Level.SEVERE);
 
-        MongoClient client = MongoClients.create(url);
-        MongoDatabase database = client.getDatabase(dbName);
-        datasets = database.getCollection("datasets");
-        System.out.println("MongoDB connected");
+            MongoClient client = MongoClients.create(url);
+            MongoDatabase database = client.getDatabase(dbName);
+            datasets = database.getCollection("datasets");
+            System.out.println("MongoDB connected");
+        } catch (Exception e) {
+            System.out.println("Please check your internet connection.");
+            System.exit(0);
+        }
     }
 
     public static MongoCollection<Document> getDatasetCollection() {

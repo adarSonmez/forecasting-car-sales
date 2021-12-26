@@ -3,11 +3,11 @@ package com.tesla.ds;
 import java.util.Arrays;
 import java.util.Collections;
 
-@SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked, unused")
 public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     private T[] arr;
-    private int len = 0;
-    private int capacity = 0;
+    private int length;
+    private int capacity;
 
     public MyArrayList() {
         this(16);
@@ -16,20 +16,22 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
     public MyArrayList(int capacity) {
         if (capacity < 0) throw new IllegalArgumentException("Illegal Capacity: " + capacity);
         this.capacity = capacity;
+        this.length = 0;
         arr = (T[]) new Object[capacity];
     }
 
     @Override
-    public void add(T elem) {
-        if (len + 1 >= capacity) {
+    public void add(T e) {
+        // add element, handle capacity
+        if (length + 1 >= capacity) {
             if (capacity == 0) capacity = 1;
             else capacity *= 2;
             T[] new_arr = (T[]) new Object[capacity];
-            if (len >= 0) System.arraycopy(arr, 0, new_arr, 0, len);
+            if (length >= 0) System.arraycopy(arr, 0, new_arr, 0, length);
             arr = new_arr;
         }
 
-        arr[len++] = elem;
+        arr[length++] = e;
     }
 
 
@@ -40,64 +42,65 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
 
     @Override
     public int size() {
-        return len;
+        return length;
     }
 
     @Override
     public T first() {
-        return null;
+        return arr[0];
     }
 
     @Override
     public T last() {
-        return null;
+        return arr[size() - 1];
     }
 
     public T get(int index) {
-        if (index >= len || index < 0) throw new IndexOutOfBoundsException();
+        if (index >= length || index < 0) throw new IndexOutOfBoundsException();
         return arr[index];
     }
 
-    public void set(int index, T elem) {
-        if (index >= len || index < 0) throw new IndexOutOfBoundsException();
-        arr[index] = elem;
+    public void set(int index, T e) {
+        if (index >= length || index < 0) throw new IndexOutOfBoundsException();
+        arr[index] = e;
     }
 
     public void clear() {
-        for (int i = 0; i < len; i++) arr[i] = null;
-        len = 0;
+        for (int i = 0; i < length; i++) arr[i] = null;
+        length = 0;
     }
 
     @Override
     public T removeFirst() {
-        return null;
+        return removeAt(0);
     }
 
     @Override
     public T removeLast() {
-        return null;
+        return removeAt(size() - 1);
     }
 
     @Override
     public T removeAt(int index) {
-        if (index >= len || index < 0) throw new IndexOutOfBoundsException();
+        // remove element and reduce capacity
+        if (index >= length || index < 0) throw new IndexOutOfBoundsException();
         T data = arr[index];
-        T[] new_arr = (T[]) new Object[len - 1];
-        for (int i = 0, j = 0; i < len; i++, j++)
+        T[] new_arr = (T[]) new Object[length - 1];
+        for (int i = 0, j = 0; i < length; i++, j++)
             if (i == index) j--;
             else new_arr[j] = arr[i];
         arr = new_arr;
-        capacity = --len;
+        capacity = --length;
         return data;
     }
 
     @Override
-    public int indexOf(Object obj) {
-        for (int i = 0; i < len; i++) {
-            if (obj == null) {
+    public int indexOf(Object o) {
+        for (int i = 0; i < length; i++) {
+            if (o == null) {
                 if (arr[i] == null) return i;
             } else {
-                if (obj.equals(arr[i])) return i;
+                if (o.equals(arr[i])) return i;
             }
         }
         return -1;
@@ -110,12 +113,12 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
 
     @Override
     public java.util.Iterator<T> iterator() {
-        return new java.util.Iterator<T>() {
+        return new java.util.Iterator<>() {
             int index = 0;
 
             @Override
             public boolean hasNext() {
-                return index < len;
+                return index < length;
             }
 
             @Override
@@ -151,11 +154,11 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
 
     @Override
     public String toString() {
-        if (len == 0) return "[]";
+        if (length == 0) return "[]";
         else {
-            StringBuilder sb = new StringBuilder(len).append("[");
-            for (int i = 0; i < len - 1; i++) sb.append(arr[i]).append(", ");
-            return sb.append(arr[len - 1]).append("]").toString();
+            StringBuilder sb = new StringBuilder(length).append("[");
+            for (int i = 0; i < length - 1; i++) sb.append(arr[i]).append(", ");
+            return sb.append(arr[length - 1]).append("]").toString();
         }
     }
 }

@@ -33,6 +33,9 @@
       <VBox.margin>
          <Insets top="-10.0" />
       </VBox.margin>
+      <padding>
+         <Insets left="10.0" right="10.0" />
+      </padding>
    </Label>
    <VBox prefHeight="458.0" prefWidth="586.0">
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

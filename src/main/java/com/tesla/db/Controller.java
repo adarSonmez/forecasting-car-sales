@@ -6,12 +6,8 @@ import com.tesla.ds.MyMap;
 import org.bson.Document;
 
 import java.util.Arrays;
-import java.util.Map;
 
 public class Controller {
-    private Controller() {
-    }
-
     public static void addDataset(String name, int numOfRecordsForEachMonth, MyMap<String, String[]> records1, MyMap<String, String[]> records2) {
         Document document = createDocumentToInsert(name, numOfRecordsForEachMonth, records1, records2);
 
@@ -29,6 +25,7 @@ public class Controller {
         System.out.println(name + " updated.");
     }
 
+    // add and update methods use this operation to create a document
     private static Document createDocumentToInsert(String name, int numOfRecordsForEachMonth, MyMap<String, String[]> records1, MyMap<String, String[]> records2) {
         Document document = new Document("Name", name);
         Document firstYear = new Document();
@@ -54,6 +51,7 @@ public class Controller {
         datasetCollection.deleteOne(document);
     }
 
+    // get all collections from mongoDB and convert them to MyArrayList data structure
     public static MyArrayList<Document> getAllDatasets() {
         MongoCollection<Document> datasetCollection = Config.getDatasetCollection();
         MyArrayList<Document> list = new MyArrayList<>();

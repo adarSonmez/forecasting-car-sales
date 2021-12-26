@@ -2,15 +2,13 @@ package com.tesla.models;
 
 import com.tesla.ds.MyArrayList;
 
-import java.util.ArrayList;
-
+@SuppressWarnings("unused")
 public class Dataset {
     private final MyArrayList<MyArrayList<String>> allRecords = new MyArrayList<>();
-    private final int minSalesCount;
-    private final int maxSalesCount;
     private final String name;
     private final int numOfRecordsForEachMonth;
     private final int totalRecord;
+    // first year
     private final MyArrayList<String> januaryRecords1;
     private final MyArrayList<String> februaryRecords1;
     private final MyArrayList<String> marchRecords1;
@@ -23,7 +21,7 @@ public class Dataset {
     private final MyArrayList<String> octoberRecords1;
     private final MyArrayList<String> novemberRecords1;
     private final MyArrayList<String> decemberRecords1;
-
+    // second year
     private final MyArrayList<String> januaryRecords2;
     private final MyArrayList<String> februaryRecords2;
     private final MyArrayList<String> marchRecords2;
@@ -37,10 +35,15 @@ public class Dataset {
     private final MyArrayList<String> novemberRecords2;
     private final MyArrayList<String> decemberRecords2;
 
+    int minSalesCount;
+    int maxSalesCount;
+
     public Dataset(String name, int numOfRecordsForEachMonth, MyArrayList<String> januaryRecords1, MyArrayList<String> februaryRecords1, MyArrayList<String> marchRecords1, MyArrayList<String> aprilRecords1, MyArrayList<String> mayRecords1, MyArrayList<String> junRecords1, MyArrayList<String> julyRecords1, MyArrayList<String> augustRecords1, MyArrayList<String> septemberRecords1, MyArrayList<String> octoberRecords1, MyArrayList<String> novemberRecords1, MyArrayList<String> decemberRecords1, MyArrayList<String> januaryRecords2, MyArrayList<String> februaryRecords2, MyArrayList<String> marchRecords2, MyArrayList<String> aprilRecords2, MyArrayList<String> mayRecords2, MyArrayList<String> junRecords2, MyArrayList<String> julyRecords2, MyArrayList<String> augustRecords2, MyArrayList<String> septemberRecords2, MyArrayList<String> octoberRecords2, MyArrayList<String> novemberRecords2, MyArrayList<String> decemberRecords2) {
         this.name = name;
         this.numOfRecordsForEachMonth = numOfRecordsForEachMonth;
         this.totalRecord = numOfRecordsForEachMonth * 24;
+
+        // add records of all months to a list
         allRecords.add(this.januaryRecords1 = januaryRecords1);
         allRecords.add(this.februaryRecords1 = februaryRecords1);
         allRecords.add(this.marchRecords1 = marchRecords1);
@@ -89,11 +92,9 @@ public class Dataset {
 
     public int getMaxSalesCount() {
         final int[] max = {Integer.MIN_VALUE};
-        getAllRecords().forEach(r -> {
-            r.forEach(i -> {
-                if (Integer.parseInt(i) > max[0]) max[0] = Integer.parseInt(i);
-            });
-        });
+        getAllRecords().forEach(r -> r.forEach(i -> {
+            if (Integer.parseInt(i) > max[0]) max[0] = Integer.parseInt(i);
+        }));
         return max[0];
     }
 

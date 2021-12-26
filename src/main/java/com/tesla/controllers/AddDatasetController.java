@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Map;
 
 public class AddDatasetController extends HandleFields {
 
@@ -22,6 +21,7 @@ public class AddDatasetController extends HandleFields {
         }
     }
 
+    // add dataset to the database if it is not in database
     public void submitDataset() {
         MyMap<String, String[]> records1 = getFirstYear();
         MyMap<String, String[]> records2 = getSecondYear();
@@ -36,6 +36,7 @@ public class AddDatasetController extends HandleFields {
         }
     }
 
+    // name dataset according to inserted date
     private String nameDataset() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
