@@ -60,6 +60,7 @@ public class BirdsEyeForecastsController implements Initializable {
             AlertBox.displayAlert("Invalid Choice", "Please select only one method.");
         } else {
             ViewForecastedDataset.forecastedList = selected.get(0).getForecastedList();
+            ViewForecastedDataset.methodNameTxt = selected.get(0).getName();
 
             try {
                 App.setRoot("fxml/view-forecasted-dataset");

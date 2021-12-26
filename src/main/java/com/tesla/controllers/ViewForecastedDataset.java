@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 public class ViewForecastedDataset extends HandleFields implements Initializable {
     public static int numOfRecs;
+    public static String methodNameTxt;
     public static MyArrayList<Integer> forecastedList;
     public Label datasetName;
     public Label methodName;
@@ -60,5 +61,7 @@ public class ViewForecastedDataset extends HandleFields implements Initializable
         oct2.setText(eachMonth(22, numOfRecs, forecastedList));
         nov2.setText(eachMonth(23, numOfRecs, forecastedList));
         dec2.setText(eachMonth(24, numOfRecs, forecastedList));
+
+        methodName.setText(methodNameTxt);
     }
 }
