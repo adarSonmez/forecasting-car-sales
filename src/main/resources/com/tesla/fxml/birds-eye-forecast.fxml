@@ -13,9 +13,9 @@
     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
   </padding>
   <Label fx:id="datasetName" alignment="CENTER" prefHeight="95.0" prefWidth="273.0" text="Forecasts For Dataset 1" textAlignment="CENTER" />
-  <TableView fx:id="MethodsTable" prefHeight="212.0" prefWidth="600.0">
+  <TableView fx:id="MethodsTable" prefHeight="212.0" prefWidth="600.0" maxWidth="600.0">
     <columns>
-      <TableColumn fx:id="methodName" prefWidth="250.0" text="Method Name" />
+      <TableColumn fx:id="methodName" prefWidth="230.0" text="Method Name" />
       <TableColumn fx:id="minSales" prefWidth="135.0" text="Min Forecasted Sales" />
       <TableColumn fx:id="maxSales" prefWidth="135.0" text="Max Forecasted Sales" />
       <TableColumn fx:id="mse" minWidth="0.0" prefWidth="97.0" text="MSE" />

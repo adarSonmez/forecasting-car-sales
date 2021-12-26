@@ -99,6 +99,6 @@ public class ViewUpdateController extends HandleFields implements Initializable 
     }
 
     public void printReversed() {
-        television.setText("Reversed Dataset: " + dataset.getListOfRecords().getReverse().toString());
+        television.setText(dataset.getListOfRecords().getReverse().toString());
     }
 }

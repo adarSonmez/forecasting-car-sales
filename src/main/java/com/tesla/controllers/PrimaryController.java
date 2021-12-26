@@ -80,6 +80,12 @@ public class PrimaryController implements Initializable {
             BirdsEyeForecastsController.setDataset(selected.get(0));
 
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            System.out.println("MSE of Exponential Smoothing       : " + DeseasonalizedRegressionAnalysis.getMSE());
+            System.out.println("MSE of Double Exponential Smoothing: " + DeseasonalizedRegressionAnalysis.getMSE());
+            System.out.println("MSE of Regression Analysis:          " + DeseasonalizedRegressionAnalysis.getMSE());
+            System.out.println("MSE of Deseasonalized Reg. Analysis: " + DeseasonalizedRegressionAnalysis.getMSE());
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
             ViewForecastedDataset.numOfRecs = selected.get(0).getNumOfRecordsForEachMonth();
 
             try {
