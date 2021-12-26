@@ -21,7 +21,7 @@ public class ExponentialSmoothing {
             if (i == 0) {
                 frr.add(arr.get(0));
             } else {
-                double forecast = ((arr.get(i) * E_ALPHA) + (frr.get(i - 1) * (1 - E_ALPHA)));
+                double forecast = ((arr.get(i-1) * E_ALPHA) + (frr.get(i - 1) * (1 - E_ALPHA)));
                 frr.add((int) forecast);
             }
         }
