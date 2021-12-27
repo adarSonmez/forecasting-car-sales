@@ -87,6 +87,7 @@ public class PrimaryController implements Initializable {
             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
             ViewForecastedDataset.numOfRecs = selected.get(0).getNumOfRecordsForEachMonth();
+            ViewForecastedDataset.datasetNameTxt = selected.get(0).getName();
 
             try {
                 App.setRoot("fxml/birds-eye-forecast");
