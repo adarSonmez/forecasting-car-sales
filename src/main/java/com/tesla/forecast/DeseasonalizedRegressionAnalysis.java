@@ -14,31 +14,13 @@ public class DeseasonalizedRegressionAnalysis {
         numOfRecs = numOfRecordsForEachMonth;
 
         MyArrayList<Integer> arr = dataset.getListOfRecords();
-        MyArrayList<Integer> arr1 = new MyArrayList<>();
-        MyArrayList<Integer> arr2 = new MyArrayList<>();
-        MyArrayList<Integer> frr = new MyArrayList<>();
-        MyArrayList<Double> expectedDemands = new MyArrayList<>();
-        MyArrayList<Double> deseasonDemand = new MyArrayList<>();
-        MyArrayList<Double> periodFactors = new MyArrayList<>();
+        MyArrayList<Integer> arr1 = new MyArrayList<>(), arr2 = new MyArrayList<>(), frr = new MyArrayList<>();
+        MyArrayList<Double> expectedDemands = new MyArrayList<>(), deseasonDemand = new MyArrayList<>(),periodFactors = new MyArrayList<>();
 
-        double period;
-        double expectedDemand;
         double month = arr.size();
-        double overAllAverageSum = 0;
-        double deseasonalDemand;
-        double regressionAnalysis;
-        double rega;
-        double regb;
-        // y
-        double calcOfSales = 0;
-        // x
-        double calcOfTime = 0;
-        // x^2
-        double calcOfTimePower = 0;
-        // x.y
-        double calcofMxS = 0;
-        double averageOfSales;
-        double averageOfTime;
+        double period, expectedDemand, deseasonalDemand, regressionAnalysis, rega, regb;
+        double overAllAverageSum = 0, calcOfSales = 0, calcOfTime = 0, calcOfTimePower = 0, calcofMxS = 0;
+        double averageOfSales, averageOfTime;
 
         // split one array into two arrays
         for (int i = 0; i < month; i++) {
