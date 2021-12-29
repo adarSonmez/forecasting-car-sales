@@ -1,6 +1,6 @@
 package com.tesla.ds;
 
-public class MyDoublyLinkedList<T> implements MyList<T> {
+public class MyDoublyLinkedList<T> implements MyList<T>, Iterable<T> {
     private int size = 0;
     private Node<T> head = null;
     private Node<T> tail = null;
@@ -78,6 +78,33 @@ public class MyDoublyLinkedList<T> implements MyList<T> {
     }
 
     @Override
+    public T get(int index) {
+        Node<T> node = getNode(index);
+        return node.data;
+    }
+
+    private Node<T> getNode(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Illegal Index");
+        }
+
+        int i;
+        Node<T> temp;
+
+        if (index < size / 2) {
+            for (i = 0, temp = head; i != index; i++) {
+                temp = temp.next;
+            }
+        } else {
+            for (i = size - 1, temp = tail; i != index; i--) {
+                temp = temp.prev;
+            }
+        }
+
+        return temp;
+    }
+
+    @Override
     public T removeFirst() {
         if (isEmpty()) throw new RuntimeException("List is empty");
 
@@ -122,22 +149,7 @@ public class MyDoublyLinkedList<T> implements MyList<T> {
 
     @Override
     public T removeAt(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException("Illegal Index");
-        }
-
-        int i;
-        Node<T> temp;
-
-        if (index < size / 2) {
-            for (i = 0, temp = head; i != index; i++) {
-                temp = temp.next;
-            }
-        } else {
-            for (i = size - 1, temp = tail; i != index; i--) {
-                temp = temp.prev;
-            }
-        }
+        Node<T> temp = getNode(index);
         return remove(temp);
     }
 
@@ -181,6 +193,30 @@ public class MyDoublyLinkedList<T> implements MyList<T> {
         }
         sb.append(" ]");
         return sb.toString();
+    }
+
+    @Override
+    public java.util.Iterator<T> iterator() {
+        return new java.util.Iterator<T>() {
+            private Node<T> trav = head;
+
+            @Override
+            public boolean hasNext() {
+                return trav != null;
+            }
+
+            @Override
+            public T next() {
+                T data = trav.data;
+                trav = trav.next;
+                return data;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
     }
 
     private static class Node<T> {

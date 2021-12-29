@@ -5,8 +5,8 @@ package com.tesla.ds;
  */
 @SuppressWarnings("unused")
 public class MyMap<K, V> {
-    MyArrayList<K> keys = new MyArrayList<>();
-    MyArrayList<V> values = new MyArrayList<>();
+    MyDoublyLinkedList<K> keys = new MyDoublyLinkedList<>();
+    MyDoublyLinkedList<V> values = new MyDoublyLinkedList<>();
     int size;
 
     public MyMap() {
@@ -19,11 +19,11 @@ public class MyMap<K, V> {
         size++;
     }
 
-    public MyArrayList<K> keys() {
+    public MyDoublyLinkedList<K> keys() {
         return keys;
     }
 
-    public MyArrayList<V> values() {
+    public MyDoublyLinkedList<V> values() {
         return values;
     }
 

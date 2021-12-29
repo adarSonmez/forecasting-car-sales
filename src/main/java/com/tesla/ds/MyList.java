@@ -15,6 +15,8 @@ public interface MyList<T> {
 
     T removeLast();
 
+    T get(int index);
+
     T removeAt(int index);
 
     int indexOf(Object obj);

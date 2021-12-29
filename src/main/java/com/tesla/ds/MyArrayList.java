@@ -55,6 +55,7 @@ public class MyArrayList<T> implements MyList<T>, Iterable<T> {
         return arr[size() - 1];
     }
 
+    @Override
     public T get(int index) {
         if (index >= length || index < 0) throw new IndexOutOfBoundsException();
         return arr[index];
