@@ -38,7 +38,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <finalName>Forecast App JAVA v11</finalName>
+              <finalName>forecast-app</finalName>
               <shadedArtifactAttached>true</shadedArtifactAttached>
               <transformers>
                 <transformer implementation=
