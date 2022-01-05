@@ -12,9 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class Config {
-    private final static String username = "admin26";
-    private final static String password = "k8LmIlY8VyiIRrLG";
-    private final static String dbName = "forecast_app";
+    private final static String username = "mongo011322";
+    private final static String password = "RrGLcL5jv4uiTcz6";
+    private final static String dbName = "atlas_hackathon";
     private final static String url = MessageFormat.format("mongodb+srv://{0}:{1}@sandbox.3xclm.mongodb.net/{2}?retryWrites=true&w=majority", username, password, dbName);
 
     private static MongoCollection<Document> datasets;
