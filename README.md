@@ -2,6 +2,8 @@
 ## 1. Introduction
 When you enter the monthly sales data of your products in the past two years, our application reports how much your product will be sold for each month of the next two years with 4 different forecasting methods. These forecasting methods are "Exponential Smoothing","Double Exponential Smoothing","Regression Analysis" and "Deseasonalized Regression Analysis". MSE is calculated for each method and the method with the lowest error rate is determined. But you can get the reports of all other forecasting methods.
 
+![Figure 0: Flowchart](src/main/resources/images/flowchart.jpeg)
+
 ## 2. About Software
 Our application has a user-friendly interface. We used the JavaFX library in the interface of our application and benefited from FXML technology. Besides, we preferred to use MongoDB in our program because of its flexibility, speed, power and compatibility with Java. It is very enjoyable to make the database management part of our application from MongoDB Atlas. Atlas made it very easy to deal with the database, thanks to its cool and understandable interface.
 
